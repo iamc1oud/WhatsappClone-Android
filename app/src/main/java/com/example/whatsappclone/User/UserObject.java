@@ -1,4 +1,4 @@
-package com.example.whatsappclone;
+package com.example.whatsappclone.User;
 
 public class UserObject {
     private String name, phone;
@@ -14,5 +14,9 @@ public class UserObject {
 
     public String getPhone(){
         return phone;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 }

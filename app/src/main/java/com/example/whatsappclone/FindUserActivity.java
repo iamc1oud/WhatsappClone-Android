@@ -13,6 +13,9 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.LinearLayout;
 
+import com.example.whatsappclone.User.UserListAdapter;
+import com.example.whatsappclone.User.UserObject;
+import com.example.whatsappclone.Utils.CountryToPhonePrefix;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -74,7 +77,7 @@ public class FindUserActivity extends AppCompatActivity {
                     String phone = "", name = "";
                     for(DataSnapshot childsnapshot: snapshot.getChildren()){
                         if(childsnapshot.child("phone").getValue().toString()!=null){
-                            phone = childsnapshot.child("phone").getValue().toString();
+                            name = childsnapshot.child("phone").getValue().toString();
                         }
                         if(childsnapshot.child("name").getValue().toString()!=null){
                             phone = childsnapshot.child("name").getValue().toString();
