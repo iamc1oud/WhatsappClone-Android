@@ -61,7 +61,7 @@ public class FindUserActivity extends AppCompatActivity {
                 phoneNumber = ISOPrefix + phoneNumber;
                 Log.d("PHONE_NUMBER", ISOPrefix);
             }
-            UserObject mContact = new UserObject(name, phoneNumber);
+            UserObject mContact = new UserObject(name, phoneNumber, "");
             contactList.add(mContact);
             getUserDetails(mContact);
         }
@@ -83,7 +83,7 @@ public class FindUserActivity extends AppCompatActivity {
                             phone = childsnapshot.child("name").getValue().toString();
                         }
 
-                        UserObject mUser = new UserObject(name , phone);
+                        UserObject mUser = new UserObject(name , phone, childsnapshot.getKey());
                         userList.add(mUser);
                         mUserListAdapter.notifyDataSetChanged();
                         return;
