@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.widget.LinearLayout;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +29,7 @@ public class FindUserActivity extends AppCompatActivity {
     private RecyclerView.Adapter mUserListAdapter;
     private RecyclerView.LayoutManager mUserListLayoutManager;
 
-    ArrayList<UserObject> contactList, userList = new ArrayList<>();
+    ArrayList<UserObject> contactList = new ArrayList<>(), userList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -55,6 +56,7 @@ public class FindUserActivity extends AppCompatActivity {
 
             if(!String.valueOf(phoneNumber.charAt(0)).equals("+")){
                 phoneNumber = ISOPrefix + phoneNumber;
+                Log.d("PHONE_NUMBER", ISOPrefix);
             }
             UserObject mContact = new UserObject(name, phoneNumber);
             contactList.add(mContact);
@@ -94,11 +96,12 @@ public class FindUserActivity extends AppCompatActivity {
     }
 
     private String getCountryISO(){
-        String iso = null;
+        String iso = "";
         TelephonyManager telephonyManager = (TelephonyManager) getApplicationContext().getSystemService(getApplicationContext().TELEPHONY_SERVICE);
         if(telephonyManager.getNetworkCountryIso() != null){
-            if(telephonyManager.getNetworkCountryIso().toString().equals("")){
-                iso = telephonyManager.getNetworkCountryIso().toString();
+            if(!telephonyManager.getNetworkCountryIso().equals("")){
+                iso = telephonyManager.getNetworkCountryIso();
+                Log.d("COUNTRY_ISO_CODE", iso);
             }
         }
         return CountryToPhonePrefix.getPhone(iso);

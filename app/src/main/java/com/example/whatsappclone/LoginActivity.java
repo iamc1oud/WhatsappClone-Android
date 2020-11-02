@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -108,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Map<String, Object> userMap = new HashMap<>();
                                     userMap.put("phone", user.getPhoneNumber());
                                     userMap.put("name", user.getDisplayName());
+                                    Log.d("NAME_FROM_FIREBASE", user.getDisplayName());
                                     mUserDB.updateChildren(userMap);
                                 }
                             }
