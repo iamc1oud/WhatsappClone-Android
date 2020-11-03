@@ -1,5 +1,7 @@
 package com.example.whatsappclone.Chat;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.whatsappclone.ChatActivity;
 import com.example.whatsappclone.R;
 import com.example.whatsappclone.User.UserObject;
 
@@ -33,11 +36,16 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatLi
         }
 
         @Override
-        public void onBindViewHolder(@NonNull ChatListAdapter.ChatListViewHolder holder, int position){
+        public void onBindViewHolder(@NonNull final ChatListAdapter.ChatListViewHolder holder, int position){
                 holder.mTitle.setText(ChatList.get(position).getChatId());
                 holder.mLayout.setOnClickListener(new View.OnClickListener(){
                         @Override
                         public void onClick(View v){
+                                Intent intent = new Intent(v.getContext(), ChatActivity.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("chatID", ChatList.get(holder.getAdapterPosition()).getChatId());
+                                intent.putExtras(bundle);
+                                v.getContext().startActivity(intent);
 
                         }
                 });

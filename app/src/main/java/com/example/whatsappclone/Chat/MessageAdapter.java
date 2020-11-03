@@ -1,4 +1,4 @@
-package com.example.whatsappclone;
+package com.example.whatsappclone.Chat;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.whatsappclone.Chat.ChatListAdapter;
-import com.example.whatsappclone.Chat.ChatObject;
-import com.example.whatsappclone.Chat.MessageObject;
+import com.example.whatsappclone.R;
 
 import java.util.ArrayList;
 
